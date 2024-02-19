@@ -5,21 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.Year;
-import java.util.Objects;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserPostRequest {
+public class UserDTO {
     private String username;
     private String password;
-
-    public UserPostRequest(String username, String password) {
-        this.username = Objects.requireNonNull(username);
-        this.password = Objects.requireNonNull(password);
-    }
 
     public String getUsername() {
         return username;
