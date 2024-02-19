@@ -1,4 +1,4 @@
-package com.anajlm.movieapi.dto;
+package com.anajlm.movieapi.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

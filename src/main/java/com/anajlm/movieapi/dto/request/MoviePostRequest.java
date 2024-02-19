@@ -1,4 +1,4 @@
-package com.anajlm.movieapi.dto;
+package com.anajlm.movieapi.dto.request;
 
 import com.anajlm.movieapi.domain.Director;
 import com.anajlm.movieapi.domain.enums.Genre;

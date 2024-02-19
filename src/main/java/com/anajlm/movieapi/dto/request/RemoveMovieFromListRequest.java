@@ -1,12 +1,12 @@
-package com.anajlm.movieapi.dto;
+package com.anajlm.movieapi.dto.request;
 
 import java.util.Objects;
 
-public class AddMovieToListRequest {
+public class RemoveMovieFromListRequest {
 
     private String title;
 
-    public AddMovieToListRequest(String title){
+    public RemoveMovieFromListRequest(String title){
         this.title = Objects.requireNonNull(title);
     }
 
@@ -17,4 +17,5 @@ public class AddMovieToListRequest {
     public void setTitle(String title) {
         this.title = title;
     }
+
 }

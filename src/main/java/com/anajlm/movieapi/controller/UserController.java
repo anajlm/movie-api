@@ -1,7 +1,7 @@
 package com.anajlm.movieapi.controller;
 
 import com.anajlm.movieapi.domain.*;
-import com.anajlm.movieapi.dto.UserPostRequest;
+import com.anajlm.movieapi.dto.request.UserPostRequest;
 import com.anajlm.movieapi.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

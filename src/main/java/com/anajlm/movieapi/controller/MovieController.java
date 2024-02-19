@@ -2,7 +2,7 @@ package com.anajlm.movieapi.controller;
 
 import com.anajlm.movieapi.domain.Movie;
 import com.anajlm.movieapi.domain.Review;
-import com.anajlm.movieapi.dto.MoviePostRequest;
+import com.anajlm.movieapi.dto.request.MoviePostRequest;
 import com.anajlm.movieapi.repository.MovieRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;

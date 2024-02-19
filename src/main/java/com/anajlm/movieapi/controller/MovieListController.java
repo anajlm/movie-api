@@ -3,8 +3,9 @@ package com.anajlm.movieapi.controller;
 import com.anajlm.movieapi.domain.Movie;
 import com.anajlm.movieapi.domain.MovieList;
 import com.anajlm.movieapi.domain.User;
-import com.anajlm.movieapi.dto.AddMovieToListRequest;
-import com.anajlm.movieapi.dto.MovieListPostRequest;
+import com.anajlm.movieapi.dto.request.AddMovieToListRequest;
+import com.anajlm.movieapi.dto.request.MovieListPostRequest;
+import com.anajlm.movieapi.dto.request.RemoveMovieFromListRequest;
 import com.anajlm.movieapi.repository.MovieListRepository;
 import com.anajlm.movieapi.repository.MovieRepository;
 import org.modelmapper.ModelMapper;
@@ -49,8 +50,15 @@ public class MovieListController {
     }
 
     @PostMapping("lists/{id}/remove_item")
-    public ResponseEntity<MovieList> removeMovieFromList(@PathVariable Long id){
-        
+    public ResponseEntity<MovieList> removeMovieFromList(@PathVariable Long id, @RequestBody RemoveMovieFromListRequest movieRequest){
+        Optional<MovieList> optionalMovieList = movieListRepository.findById(id);
+        Movie movie = movieRepository.findByTitleIgnoreCase(movieRequest.getTitle());
+        if(!optionalMovieList.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        MovieList list = optionalMovieList.get();
+        list.getMovies().remove(movie);
+        return ResponseEntity.ok(movieListRepository.save(list));
     }
 
     @DeleteMapping("/lists/{id}")
