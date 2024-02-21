@@ -1,20 +1,16 @@
 package com.anajlm.movieapi.dto.request;
 
-import com.anajlm.movieapi.domain.Movie;
 import com.anajlm.movieapi.domain.User;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 
-import java.util.List;
 import java.util.Objects;
 
-public class MovieListPostRequest {
+public class CreateMovieListRequest {
 
     private String name;
 
     private User user;
 
-    public MovieListPostRequest(String name, User user) {
+    public CreateMovieListRequest(String name, User user) {
         this.name = Objects.requireNonNull(name);
         this.user = Objects.requireNonNull(user);
     }

@@ -2,11 +2,11 @@ package com.anajlm.movieapi.dto.request;
 
 import java.util.Objects;
 
-public class DirectorPostRequest {
+public class CreateDirectorRequest {
 
     private String name;
 
-    public DirectorPostRequest(String name) {
+    public CreateDirectorRequest(String name) {
         this.name = Objects.requireNonNull(name);
     }
 

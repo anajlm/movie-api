@@ -4,7 +4,7 @@ import com.anajlm.movieapi.domain.Movie;
 
 import java.time.LocalDate;
 
-public class ReviewPostRequest {
+public class CreateReviewRequest {
 
     private Movie movie;
 

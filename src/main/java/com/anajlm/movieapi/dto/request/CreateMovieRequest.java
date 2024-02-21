@@ -14,7 +14,7 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MoviePostRequest {
+public class CreateMovieRequest {
 
     private String title;
 
@@ -24,7 +24,7 @@ public class MoviePostRequest {
 
     private Genre genre;
 
-    public MoviePostRequest(String title, Year releaseYear, Director director, Genre genre) {
+    public CreateMovieRequest(String title, Year releaseYear, Director director, Genre genre) {
         this.title = Objects.requireNonNull(title);
         this.releaseYear = Objects.requireNonNull(releaseYear);
         this.genre = Objects.requireNonNull(genre);
