@@ -4,7 +4,7 @@ import com.anajlm.movieapi.domain.Movie;
 import com.anajlm.movieapi.domain.MovieList;
 import com.anajlm.movieapi.domain.User;
 import com.anajlm.movieapi.dto.request.AddMovieToListRequest;
-import com.anajlm.movieapi.dto.request.MovieListPostRequest;
+import com.anajlm.movieapi.dto.request.CreateMovieListRequest;
 import com.anajlm.movieapi.dto.request.RemoveMovieFromListRequest;
 import com.anajlm.movieapi.repository.MovieListRepository;
 import com.anajlm.movieapi.repository.MovieRepository;
@@ -32,7 +32,7 @@ public class MovieListController {
 
 
     @PostMapping("/lists/{id}")
-    public ResponseEntity<MovieList> createList(@RequestBody MovieListPostRequest movieListRequest){
+    public ResponseEntity<MovieList> createList(@RequestBody CreateMovieListRequest movieListRequest){
         MovieList movieList = modelMapper.map(movieListRequest, MovieList.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(movieList);
     }

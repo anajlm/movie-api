@@ -1,7 +1,9 @@
 package com.anajlm.movieapi.controller;
 
 import com.anajlm.movieapi.domain.*;
-import com.anajlm.movieapi.dto.request.UserPostRequest;
+import com.anajlm.movieapi.dto.request.CreateUserRequest;
+import com.anajlm.movieapi.dto.request.UpdateUserRequest;
+import com.anajlm.movieapi.exception.UserNotFoundException;
 import com.anajlm.movieapi.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,18 +72,23 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody UserPostRequest userRequest){
+    public ResponseEntity<User> createUser(@RequestBody CreateUserRequest userRequest){
         User newUser = modelMapper.map(userRequest, User.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.save(newUser));
     }
 
+    @PutMapping("/users/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody UpdateUserRequest userRequest){
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
+        user.setPassword(userRequest.getPassword());
+        return ResponseEntity.ok(userRepository.save(user));
+    }
 
     @DeleteMapping("/users/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable Long id){
-        Optional<User> optionalUser = userRepository.findById(id);
-        if(!optionalUser.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
+        User user = userRepository.findById(id)
+                    .orElseThrow(() -> new UserNotFoundException(id));
         userRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
